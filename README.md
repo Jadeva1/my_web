@@ -1,54 +1,28 @@
-# Portfolio de Raúl Adeva Alía
+# José Raúl Adeva Alía
 
-Portfolio estático bilingüe (español/inglés), responsive y preparado para GitHub Pages. Está construido con HTML, CSS y JavaScript sin dependencias externas ni backend.
+**Física · Programación · Investigación científica · Desarrollo web**
 
-## Archivos
+Portfolio personal de José Raúl Adeva Alía, graduado en Ciencias Físicas por la Universidad Complutense de Madrid. Este espacio reúne una selección de proyectos, experiencia profesional y áreas técnicas que conectan la investigación científica con las herramientas computacionales.
 
-- `index.html`: contenido y estructura semántica.
-- `styles.css`: estilos responsive y tema oscuro.
-- `script.js`: selector de idioma y renderizado seguro de enlaces sociales.
-- `config.js`: configuración de URLs públicas de LinkedIn y GitHub.
-- `assets/favicon.svg`: favicon vectorial.
+## Áreas de interés y trabajo
 
-## Antes de publicar
+- **Investigación y física:** espectroscopía galáctica, análisis de datos astronómicos y simulación PET.
+- **Programación y datos:** Python, MATLAB, SQL, NumPy y PySpark.
+- **Computación científica e inteligencia artificial:** análisis y modelización de datos, simulación y técnicas de aprendizaje automático.
+- **Computación cuántica:** Qiskit e IBM Cloud.
+- **Desarrollo web:** HTML, CSS y JavaScript.
+- **Docencia:** enseñanza de Matemáticas y Física y preparación para pruebas de acceso a la universidad.
 
-1. Abre `config.js`.
-2. Añade las URLs reales de tus perfiles:
-   ```js
-   window.PORTFOLIO_CONFIG = {
-     linkedin: "https://www.linkedin.com/in/TU-PERFIL/",
-     github: "https://github.com/TU-USUARIO"
-   };
-   ```
-3. Sustituye los valores de ejemplo por URLs reales. El código solo mostrará URLs HTTPS de LinkedIn o GitHub válidas.
-4. Revisa el contenido y la traducción inglesa. La web solo contiene los datos profesionales del CV proporcionado; no se incluye el PDF original porque contiene teléfono y correo electrónico, que no se han elegido como información pública.
-5. Prueba localmente abriendo `index.html` en un navegador.
+## Proyectos destacados
 
-## Publicar con GitHub Pages
+- **TFG — Espectroscopía de vientos galácticos:** análisis de la galaxia NGC 4750 en el contexto de MEGARA/MEGADES, con herramientas como pPXF y ALUCINE. Calificación: 9,6/10.
+- **Investigación PET en el CSIC:** simulación y análisis de datos relacionados con detectores PET, utilizando herramientas como PeneloPET.
+- **C4P — Computación cuántica:** fundamentos de superposición y entrelazamiento y programación con Qiskit e IBM Cloud.
 
-1. Crea un repositorio en GitHub, por ejemplo `raul-adeva-portfolio`.
-2. Sube los archivos y carpetas de este proyecto a la raíz del repositorio.
-3. En el repositorio, ve a **Settings → Pages**.
-4. En **Build and deployment**, selecciona **Deploy from a branch**.
-5. Selecciona la rama principal (`main`) y la carpeta `/ (root)`, y guarda.
-6. Espera a que finalice la publicación. GitHub mostrará la URL pública en Settings → Pages.
+## Contacto
 
-No puedo publicar en tu cuenta desde este paquete; debes completar esos pasos con tu sesión de GitHub.
+- [LinkedIn](https://www.linkedin.com/in/jos%C3%A9-ra%C3%BAl-adeva-al%C3%ADa-155657436/)
+- [GitHub](https://github.com/Jadeva1)
+- [Correo electrónico](mailto:rauladeva@gmail.com)
 
-## Seguridad y privacidad
-
-- No hay backend, base de datos, formulario ni dependencias de terceros.
-- No añadas tokens, claves API, contraseñas ni datos privados al repositorio.
-- El CV original no se incluye en el sitio para evitar publicar teléfono y correo sin querer.
-- Los enlaces externos se validan como HTTPS y se abren con `rel="noopener noreferrer"`.
-- Al ser una web estática, no procesa datos de visitantes. GitHub puede tratar registros técnicos de acceso conforme a sus propias políticas.
-- GitHub Pages proporciona HTTPS cuando la publicación está disponible; activa **Enforce HTTPS** en Settings → Pages si aparece esa opción.
-- Revisa los cambios antes de publicar y mantén el contenido de las dependencias (si se añaden en el futuro) actualizado.
-
-## Personalización
-
-El contenido está escrito en `index.html`, y sus traducciones en el objeto `translations` de `script.js`. Cuando cambies texto que tenga `data-i18n`, actualiza ambas versiones para conservar el selector de idioma.
-
-## Nota sobre el contenido
-
-Los proyectos y funciones se describen únicamente con información disponible en el CV proporcionado. No se han inventado URLs de proyectos, métricas, resultados de investigación ni enlaces de perfil.
+El sitio está construido con HTML, CSS y JavaScript y publicado como web estática en GitHub Pages. Está diseñado para ser adaptable a distintos tamaños de pantalla, accesible mediante teclado y no depende de un servidor propio ni de servicios de terceros para mostrar su contenido.
