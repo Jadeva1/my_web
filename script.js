@@ -168,4 +168,73 @@
     });
   }
 
+
+  // A playful, client-side Easter egg. This is a game, not an authentication system.
+  const secretCode = "BIGBANGBANANA";
+  const revealButton = document.getElementById("reveal-secret");
+  const openButton = document.getElementById("open-secret");
+  const toast = document.getElementById("secret-toast");
+  const modal = document.getElementById("secret-modal");
+  const secretInput = document.getElementById("secret-input");
+  const secretError = document.getElementById("secret-error");
+  const secretTranslations = {
+    es: { found:"SEÑAL ANÓMALA DETECTADA", clue:"Has encontrado el código de acceso. Guárdalo, explorador:", hint:"Ahora pulsa MEGARA para desbloquear la sorpresa.", copy:"Copiar código", copied:"¡Copiado!", restricted:"ACCESO RESTRINGIDO · ÁREA MEGARA", title:"¿Traes autorización, astronauta?", description:"Introduce el código que has encontrado por la galaxia.", label:"Código de acceso", error:"Código incorrecto. El mapache de seguridad está decepcionado.", submit:"Iniciar protocolo secreto ↗", security:"Pista: una web estática esconde secretos por diversión, no por seguridad real." },
+    en: { found:"ANOMALOUS SIGNAL DETECTED", clue:"You found the access code. Keep it safe, space explorer:", hint:"Now click MEGARA to unlock the surprise.", copy:"Copy code", copied:"Copied!", restricted:"RESTRICTED ACCESS · MEGARA AREA", title:"Got clearance, astronaut?", description:"Enter the code you found somewhere in the galaxy.", label:"Access code", error:"Wrong code. The security raccoon is disappointed.", submit:"Launch secret protocol ↗", security:"Note: a static website hides secrets for fun, not for real security." }
+  };
+  function updateSecretLanguage() {
+    document.querySelectorAll("[data-secret-i18n]").forEach((el) => {
+      const key = el.dataset.secretI18n;
+      if (secretTranslations[language] && secretTranslations[language][key]) el.textContent = secretTranslations[language][key];
+    });
+  }
+  function showSecretToast() {
+    toast.hidden = false;
+    updateSecretLanguage();
+  }
+  function openSecretModal() {
+    modal.hidden = false;
+    secretError.hidden = true;
+    secretInput.value = "";
+    updateSecretLanguage();
+    window.setTimeout(() => secretInput.focus(), 0);
+  }
+  function closeSecretModal() {
+    modal.hidden = true;
+    openButton.focus();
+  }
+  revealButton.addEventListener("click", showSecretToast);
+  document.getElementById("close-secret-toast").addEventListener("click", () => { toast.hidden = true; });
+  document.getElementById("copy-secret").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(secretCode);
+      document.getElementById("copy-secret").textContent = secretTranslations[language].copied;
+    } catch (_) {
+      document.getElementById("secret-code").focus?.();
+    }
+  });
+  openButton.addEventListener("click", openSecretModal);
+  document.getElementById("close-secret-modal").addEventListener("click", closeSecretModal);
+  modal.querySelector("[data-close-secret]").addEventListener("click", closeSecretModal);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) closeSecretModal();
+  });
+  document.getElementById("secret-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (secretInput.value.trim().toUpperCase().replace(/\s+/g, "") !== secretCode) {
+      secretError.hidden = false;
+      secretInput.select();
+      return;
+    }
+    const page = new URL("easter-egg.html", window.location.href);
+    page.searchParams.set("lang", language);
+    const newTab = window.open(page.href, "_blank");
+    if (!newTab) {
+      secretError.textContent = language === "es" ? "El navegador ha bloqueado la pestaña. Permite las ventanas emergentes e inténtalo otra vez." : "Your browser blocked the new tab. Allow pop-ups and try again.";
+      secretError.hidden = false;
+      return;
+    }
+    newTab.opener = null;
+    modal.hidden = true;
+  });
+
 })();
