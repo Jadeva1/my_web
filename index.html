@@ -41,25 +41,13 @@
           <span>Physics</span><span>Python · MATLAB · SQL</span><span>AI & Data</span><span>Web Development</span><span>Quantum Computing</span>
         </div>
       </div>
-      <div class="hero-visual" role="img" aria-label="Visualización inspirada en una galaxia y su espectro de luz">
-        <div class="science-visual">
-          <div class="science-visual-header"><span>OBSERVATION / 01</span><span>NGC 4750</span></div>
-          <svg class="galaxy-art" viewBox="0 0 520 390" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <radialGradient id="galaxyGlow"><stop offset="0" stop-color="#e5f6ff"/><stop offset=".12" stop-color="#78d8ff" stop-opacity=".95"/><stop offset=".45" stop-color="#3d8bdb" stop-opacity=".28"/><stop offset="1" stop-color="#14264a" stop-opacity="0"/></radialGradient>
-              <linearGradient id="armGlow"><stop stop-color="#4fe5df" stop-opacity="0"/><stop offset=".48" stop-color="#67c8ff" stop-opacity=".8"/><stop offset="1" stop-color="#a5a3ff" stop-opacity="0"/></linearGradient>
-            </defs>
-            <g fill="#d7edff" opacity=".75"><circle cx="74" cy="65" r="1.5"/><circle cx="424" cy="76" r="1"/><circle cx="463" cy="230" r="1.6"/><circle cx="97" cy="295" r="1"/><circle cx="385" cy="330" r="1.2"/><circle cx="173" cy="44" r="1"/><circle cx="280" cy="61" r="1.4"/><circle cx="49" cy="205" r="1"/><circle cx="339" cy="282" r="1"/></g>
-            <circle cx="260" cy="177" r="130" fill="url(#galaxyGlow)"/>
-            <g transform="translate(260 177) rotate(-18)"><ellipse rx="154" ry="45" fill="none" stroke="#4ba7f5" stroke-opacity=".2"/><ellipse rx="120" ry="35" fill="none" stroke="#65d7e8" stroke-opacity=".32"/><ellipse rx="88" ry="24" fill="none" stroke="#9eabff" stroke-opacity=".4"/><path d="M-145 3 C-85 -68 5 -72 73 -22 S127 38 155 10" fill="none" stroke="url(#armGlow)" stroke-width="16" stroke-linecap="round"/><path d="M-150 -3 C-94 60 -15 66 52 25 S123 -33 151 -8" fill="none" stroke="url(#armGlow)" stroke-width="12" stroke-linecap="round"/><ellipse rx="36" ry="11" fill="#d6f5ff" fill-opacity=".8"/><ellipse rx="17" ry="7" fill="#fff" fill-opacity=".95"/></g>
-            <path d="M42 335H478" stroke="#4c719e" stroke-opacity=".55"/>
-            <g stroke="#66d8ed" stroke-width="1.5" fill="none" opacity=".85"><path d="M68 324 L80 324 L88 321 L96 325 L107 323 L118 325 L129 321 L139 323 L151 320 L163 323 L175 321 L186 323 L199 318 L209 324 L220 322 L230 324 L241 316 L251 325 L262 323 L271 324 L282 320 L291 323 L304 321 L315 324 L326 318 L336 324 L348 322 L360 324 L372 321 L383 324 L394 322 L407 325 L419 321 L432 324 L448 323"/></g>
-            <path d="M260 306V346 M246 335H274" stroke="#b0b8ff" stroke-opacity=".7" stroke-dasharray="3 4"/>
-          </svg>
-          <div class="science-visual-caption"><span><i></i> GALACTIC SPECTROSCOPY</span><span>PHYSICS × COMPUTATION</span></div>
-        </div>
-        <div class="floating-chip chip-top"><span class="chip-icon">✳</span> MEGARA · pPXF</div>
-        <div class="floating-chip chip-bottom"><span class="chip-icon">⌁</span> Research · Code · Design</div>
+      <div class="hero-visual" aria-label="Imagen astronómica de la galaxia NGC 4750">
+        <figure class="hero-galaxy-card">
+          <img class="hero-galaxy-photo" src="assets/ngc4750.webp" alt="Imagen de la galaxia espiral NGC 4750, con un núcleo brillante y brazos azulados sobre un fondo oscuro de estrellas." width="474" height="474" fetchpriority="high" decoding="async">
+          <figcaption class="hero-galaxy-caption"><span><i aria-hidden="true"></i> GALACTIC SPECTROSCOPY</span><button class="easter-trigger galaxy-trigger" id="reveal-secret" type="button" aria-label="Descubrir un secreto">NGC 4750</button></figcaption>
+        </figure>
+        <div class="floating-chip chip-top"><span class="chip-icon" aria-hidden="true">✳</span> <button class="easter-trigger password-trigger" id="open-secret" type="button" aria-label="Introducir código secreto">MEGARA</button> · pPXF</div>
+        <div class="floating-chip chip-bottom"><span class="chip-icon" aria-hidden="true">⌁</span> Research · Code · Design</div>
       </div>
       <div class="hero-scroll" aria-hidden="true"><span></span><small data-i18n="scroll">DESLIZA PARA EXPLORAR</small></div>
     </section>
@@ -149,5 +137,29 @@
       <div id="social-links" class="social-links" aria-label="Enlaces profesionales"></div>
     </section>
   </main>
+  <div class="secret-toast" id="secret-toast" role="status" aria-live="polite" hidden>
+    <button class="secret-toast-close" id="close-secret-toast" type="button" aria-label="Cerrar">×</button>
+    <span class="secret-kicker" data-secret-i18n="found">SEÑAL ANÓMALA DETECTADA</span>
+    <p data-secret-i18n="clue">Has encontrado el código de acceso. Guárdalo, explorador:</p>
+    <strong class="secret-code" id="secret-code">BIGBANGBANANA</strong>
+    <p class="secret-small" data-secret-i18n="hint">Ahora pulsa MEGARA para desbloquear la sorpresa.</p>
+    <button class="button button-primary secret-copy" id="copy-secret" type="button" data-secret-i18n="copy">Copiar código</button>
+  </div>
+  <div class="secret-modal" id="secret-modal" hidden>
+    <div class="secret-modal-backdrop" data-close-secret></div>
+    <section class="secret-modal-card" role="dialog" aria-modal="true" aria-labelledby="secret-modal-title">
+      <button class="secret-modal-close" id="close-secret-modal" type="button" aria-label="Cerrar">×</button>
+      <span class="secret-kicker" data-secret-i18n="restricted">ACCESO RESTRINGIDO · ÁREA MEGARA</span>
+      <h2 id="secret-modal-title" data-secret-i18n="title">¿Traes autorización, astronauta?</h2>
+      <p data-secret-i18n="description">Introduce el código que has encontrado por la galaxia.</p>
+      <form id="secret-form">
+        <label class="secret-label" for="secret-input" data-secret-i18n="label">Código de acceso</label>
+        <input id="secret-input" name="secret" type="password" autocomplete="off" spellcheck="false" maxlength="40" required>
+        <p class="secret-error" id="secret-error" role="alert" hidden data-secret-i18n="error">Código incorrecto. El mapache de seguridad está decepcionado.</p>
+        <button class="button button-primary secret-submit" type="submit" data-secret-i18n="submit">Iniciar protocolo secreto ↗</button>
+      </form>
+      <p class="secret-small" data-secret-i18n="security">Pista: una web estática esconde secretos por diversión, no por seguridad real.</p>
+    </section>
+  </div>
 </body>
 </html>

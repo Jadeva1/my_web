@@ -121,4 +121,51 @@
     });
   }
 
+
+  // A playful, client-side Easter egg (not a security mechanism).
+  const eggDialog = document.getElementById("egg-dialog");
+  const eggMessage = document.getElementById("egg-message");
+  const eggCodeWrap = document.getElementById("egg-code-wrap");
+  const eggPasswordForm = document.getElementById("egg-password-form");
+  const eggPassword = document.getElementById("egg-password");
+  const eggError = document.getElementById("egg-error");
+  const codeTrigger = document.querySelector(".egg-code-trigger");
+  const hintTrigger = document.querySelector(".hero-galaxy-caption span:first-child");
+
+  if (eggDialog && codeTrigger && hintTrigger) {
+    codeTrigger.addEventListener("click", () => {
+      eggMessage.textContent = "¡Has encontrado una anomalía! Los astrónomos no deberían dejar secretos a la vista… pero aquí estamos.";
+      eggCodeWrap.hidden = false;
+      eggPasswordForm.hidden = true;
+      eggError.hidden = true;
+      eggDialog.showModal();
+    });
+    hintTrigger.setAttribute("role", "button");
+    hintTrigger.setAttribute("tabindex", "0");
+    hintTrigger.setAttribute("aria-label", "Abrir el acceso secreto");
+    hintTrigger.classList.add("egg-trigger");
+    const openPassword = () => {
+      eggMessage.textContent = "Acceso restringido. Solo personal con curiosidad cósmica puede continuar.";
+      eggCodeWrap.hidden = true;
+      eggPasswordForm.hidden = false;
+      eggError.hidden = true;
+      eggDialog.showModal();
+      window.setTimeout(() => eggPassword.focus(), 50);
+    };
+    hintTrigger.addEventListener("click", openPassword);
+    hintTrigger.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openPassword(); } });
+    document.getElementById("egg-code")?.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText("BIGBANG42"); eggMessage.textContent = "Código copiado. ¡Que comience la misión!"; }
+      catch { eggMessage.textContent = "Tu código es BIGBANG42. Apúntalo antes de cerrar esta ventana."; }
+    });
+    eggPasswordForm.addEventListener("submit", event => {
+      event.preventDefault();
+      if (eggPassword.value.trim().toUpperCase() === "BIGBANG42") {
+        const target = new URL("easter-egg.html", window.location.href);
+        window.open(target.href, "_blank", "noopener,noreferrer");
+        eggDialog.close();
+      } else { eggError.hidden = false; eggPassword.select(); }
+    });
+  }
+
 })();
